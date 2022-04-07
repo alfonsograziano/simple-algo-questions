@@ -27,9 +27,9 @@ const fibIt = n => {
 
 
 console.time("It")
-console.log(fibIt(1))
+console.log(fibIt(40))
 console.timeEnd("It")
 
 console.time("Rec")
-console.log(fib(1))
+console.log(fib(40))
 console.timeEnd("Rec")

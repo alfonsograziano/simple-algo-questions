@@ -9,7 +9,15 @@ const validPalindrome = str => {
 }
 
 
-console.log("aab: ", validPalindrome("aab"))
-console.log("aba: ", validPalindrome("aba"))
-console.log("anna: ", validPalindrome("anna"))
-console.log("ciao: ", validPalindrome("ciao"))
+const validPalindromeR = str => {
+    if(str.length===1)return true
+    if(str.length === 2) return str[0] === str[1]
+
+    return (str[0] === str[str.length-1]) && validPalindrome(str.split(0,-1))
+}
+
+
+console.log("aab: ", validPalindromeR("aab"))
+console.log("aba: ", validPalindromeR("aba"))
+console.log("anna: ", validPalindromeR("anna"))
+console.log("ciao: ", validPalindromeR("ciao"))

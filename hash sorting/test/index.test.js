@@ -1,4 +1,4 @@
-const { hashSorting } = require('../algo');
+const { hashSortingPaginated } = require('../algo');
 const { generateLargeArray } = require('../utils');
 const { mergeSort } = require('../mergesort');
 const fs = require("fs")
@@ -18,7 +18,7 @@ const benchmark = (arraySize, maxElement) => {
   console.log("Mergesort ms: ", mergeTime)
 
   const startHash = new Date()
-  hashSorting([...arr])
+  hashSortingPaginated([...arr])
   const endHash = new Date()
   const hashTime = endHash.getTime() - startHash.getTime()
   console.log("hashSort ms: ", hashTime)
@@ -31,12 +31,12 @@ const benchmark = (arraySize, maxElement) => {
 }
 
 
-const saveBenchmarkResults = (arraySize, maxElement, mergeTime, hashTime) => fs.appendFileSync("testOutput10000.csv", `${arraySize},${maxElement},${mergeTime},${hashTime}\n`)
+const saveBenchmarkResults = (arraySize, maxElement, mergeTime, hashTime) => fs.appendFileSync("testOutput10000-pag.csv", `${arraySize},${maxElement},${mergeTime},${hashTime}\n`)
 
 
 saveBenchmarkResults("array size", "max element", "merge time", "hash time")
 
-for (let i = 10000; i < 250000; i = i + 5000) {
+for (let i = 1000; i < 250000; i = i + 500) {
   const arraySize = i
   const maxElement = i * 10000
 

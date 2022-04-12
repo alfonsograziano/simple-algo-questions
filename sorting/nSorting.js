@@ -80,23 +80,70 @@ const areArrayEquals = (arr1, arr2) => {
 
 
 
+const hashSortingPaginated = (arr) => {
+    if (arr.length === 0) return arr
+    const map = new Map()
+    const pages = new Map()
+
+    const pageSize = 100
+
+    let max = arr[0]
+    let min = arr[0]
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > max) max = arr[i]
+        if (arr[i] < min) min = arr[i]
+        map.set(arr[i], true)
+        pages.set(parseInt(arr[i] / pageSize), true)
+    }
+
+    const maxPages = (max / pageSize) + 1
+    const sorted = []
+    let foundPages = 0
+
+    for (let i = 0; i < maxPages; i++) {
+        if (typeof pages.get(i) !== "undefined") {
+            foundPages++
+            for(let j = 0; j < pageSize; j++){
+                const key = (i*pageSize)+j
+                if (typeof map.get(key) !== "undefined") {
+                    sorted.push(key)
+                }
+            }
+        }
+    }
+
+    // console.log("Pages found: " + foundPages)
+    // console.log("pages ratio: " + ((foundPages/maxPages)).toFixed(2))
+
+
+    return sorted
+}
+
 
 const arraySize = 100000
-const maxElement =1000000
+const maxElement =100000000
 
 console.log(`Array size: ${arraySize}, array max element: ${maxElement}`)
 const arr = generateLargeArray(arraySize, maxElement)
 console.log(`Array real size: ${arr.length}`)
+
+// const arr = [100,200,350,500,750,1000]
 
 
 console.time("Merge sort")
 const sortedWithMerge = mergeSort([...arr])
 console.timeEnd("Merge sort")
 
+
 console.time("nSort")
 const result = nSort([...arr])
 console.timeEnd("nSort")
 
+
+console.time("nSort paginated")
+const result2 = hashSortingPaginated([...arr])
+console.timeEnd("nSort paginated")
 
 console.log("Checking for the correctness...")
 const correct = areArrayEquals(sortedWithMerge, result)

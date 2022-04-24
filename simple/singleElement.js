@@ -1,3 +1,4 @@
+//HashMap approach
 const singleElement = (arr, n) => {
     const values = new Map()
     let val = null

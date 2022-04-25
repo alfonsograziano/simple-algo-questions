@@ -30,6 +30,11 @@ class ListNode{
     hasNext(){
         return typeof this.next !== "undefined"
     }
+
+    printVal(){
+        console.log(this.value)
+        return this.next
+    }
 }
 
 module.exports =  ListNode

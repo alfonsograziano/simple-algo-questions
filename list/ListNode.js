@@ -26,6 +26,10 @@ class ListNode{
         this.next = new ListNode(value)
         return this.next
     }
+
+    hasNext(){
+        return typeof this.next !== "undefined"
+    }
 }
 
 module.exports =  ListNode

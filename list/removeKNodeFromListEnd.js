@@ -12,6 +12,8 @@
 //So to solve this problem we will use two pointers 
 const ListNode = require("./ListNode")
 
+
+//firstNode have to be global in order to remove the first node if nodeIndex is the length of the list
 const removeNodeFromEndList = (nodeIndex) => {
     const end = nodeIndex - 1
 

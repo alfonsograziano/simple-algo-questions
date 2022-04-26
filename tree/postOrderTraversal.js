@@ -1,4 +1,3 @@
-//Left, Data, Right
 
 const TreeNode = require("./TreeNode")
 

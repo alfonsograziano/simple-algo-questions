@@ -1,47 +1,47 @@
-class TreeNode{
-    constructor(value, left, right){
+class TreeNode {
+    constructor(value, left = null, right = null) {
         this.value = value
         this.left = left
         this.right = right
     }
 
-    setLeft(left){
+    setLeft(left) {
         this.left = left
     }
-    setRight(right){
+    setRight(right) {
         this.right = right
     }
 
-    getLeft(left){
+    getLeft(left) {
         return this.left
     }
-    getRight(right){
+    getRight(right) {
         return this.right
     }
 
-    setValue(value){
+    setValue(value) {
         this.value = value
     }
 
-    getValue(){
+    getValue() {
         return this.value
     }
-    
-   
-    addLeft(value){
+
+
+    addLeft(value) {
         this.left = new TreeNode(value)
         return this.left
     }
 
-    addRight(value){
+    addRight(value) {
         this.right = new TreeNode(value)
         return this.right
     }
 
-    isLeaf(){
+    isLeaf() {
         return typeof this.left === "undefined" && typeof this.right === "undefined"
     }
 
 }
 
-module.exports =  TreeNode
+module.exports = TreeNode
